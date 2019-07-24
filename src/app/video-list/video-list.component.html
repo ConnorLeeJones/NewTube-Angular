@@ -1,0 +1,22 @@
+<div class="card my-5" id="video list">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">PLAY</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">DOWNLOAD</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let video of videos">
+
+              <td><a href="https://video-new-tube.herokuapp.com/videos/videoplayer/{{ video.videoId }}">play</a></td>
+
+              <td>{{ video.videoName }}</td>
+                <td><a href="{{ video.videoPath }}">download</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

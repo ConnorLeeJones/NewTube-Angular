@@ -1,0 +1,20 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div>
+      <form [formGroup] = "form" (ngSubmit)="onSubmit()">
+        <div>
+          <h4>
+          Upload your video! (mp4 only)
+            </h4>
+          <input type="file" accept="video/mp4" name="profile" (change)="upload($event)" />
+        </div>
+        <div>
+          <button type="submit" class="btn btn-info">Upload</button>
+        </div>
+        <div class="upload status">
+          <div id="uploadResponse"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
