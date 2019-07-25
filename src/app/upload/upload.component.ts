@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-upload',
@@ -9,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UploadComponent implements OnInit {
 
-  url = "http://localhost:8080/videos/uploadFile";
+  //url = "http://localhost:8080/videos/uploadFile";
+  url = environment.baseUrl + '/videos/uploadFile';
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder,

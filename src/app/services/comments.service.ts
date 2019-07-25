@@ -3,6 +3,7 @@ import {Comment, VideoComments} from "../comments/comment";
 import { HttpClient } from '@angular/common/http';
 import {catchError, tap} from "rxjs/operators";
 import {Observable, of} from "rxjs";
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +11,25 @@ import {Observable, of} from "rxjs";
 export class CommentsService {
 
   private comments: Comment[];
+  url = environment.baseUrl + '/videos/';
+
 
   constructor(private http: HttpClient) { }
+
   public getComments(videoId) : Observable<VideoComments> {
-    return this.http.get<VideoComments>("http://localhost:8080/videos"+videoId+"/comments").pipe(
+    console.log(this.http.get<VideoComments>(this.url + videoId + '/comments'));
+    return this.http.get<VideoComments>(this.url + videoId + '/comments').pipe(
       catchError(this.handleError<VideoComments>('getComments', null))
     );
   }
 
+
+
+
   public addComment(videoId, userComment) {
     console.log("Video ID " + videoId);
     console.log(userComment);
-    this.http.post("http://localhost:8080/videos"+videoId+"/comments", userComment).subscribe();
+    this.http.post(this.url + videoId + "/comments", userComment).subscribe();
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

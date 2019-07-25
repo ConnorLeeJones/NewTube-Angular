@@ -24,6 +24,7 @@ export class CommentsComponent implements OnInit {
     this.commentsService.getComments(this.videoId).subscribe(videoComments => {
        this.comments = videoComments.comments;
      });
+    console.log(this.comments[0]);
   }
 
 

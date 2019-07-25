@@ -11,7 +11,7 @@
             <tbody>
             <tr *ngFor="let video of videos">
 
-              <td><a href="https://video-new-tube.herokuapp.com/videos/videoplayer/{{ video.videoId }}">play</a></td>
+              <td><a routerLink="/videos/videoplayer/{{ video.videoId }}">play</a></td>
 
               <td>{{ video.videoName }}</td>
                 <td><a href="{{ video.videoPath }}">download</a></td>
