@@ -22,7 +22,9 @@ export class CommentsComponent implements OnInit {
     console.log("UserId === " + this.userId);  //debugging
     // to call API
     this.commentsService.getComments(this.videoId).subscribe(videoComments => {
+      console.log(videoComments);
        this.comments = videoComments.comments;
+       console.log(this.comments);
      });
     console.log(this.comments[0]);
   }

@@ -7,7 +7,7 @@
     <source src="{{video.videoPath}}" type="{{video.videoType}}">
   </video>
 
-  <app-comments userId="abc" videoId="{{video.videoId}}" id="comments"></app-comments>
+  <app-comments userId="abc" [videoId]="video.videoId" id="comments"></app-comments>
 
 
 </div>
