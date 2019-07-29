@@ -10,7 +10,37 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to angular-videoproject!');
+    expect(page.getTitleText()).toEqual('Welcome to NewTube!');
+  });
+
+  it('should display videos', () => {
+    page.navigateToPath("/videos");
+    browser.sleep(5000);
+    expect(page.getVideoNameText()).toEqual('SampleVideo_1280x720_1mb.mp4');
+  });
+
+  it('should display comments', () => {
+    page.navigateToPath("/videos/videoplayer/51");
+    browser.sleep(5000);
+    expect(page.getCommentText()).toEqual('"Comment from UI"');
+  });
+
+  it('should display upload video section', () => {
+    page.navigateToPath("/addvideo");
+    browser.sleep(5000);
+    expect(page.getUploadText()).toEqual('Upload your video! (mp4 only)');
+  });
+
+  it('should display login', () => {
+    page.navigateToPath("/login");
+    browser.sleep(5000);
+    expect(page.getLoginText()).toEqual('Login');
+  });
+
+  it('should display create user', () => {
+    page.navigateToPath("/signup");
+    browser.sleep(5000);
+    expect(page.getSignupText()).toEqual('Sign up');
   });
 
   afterEach(async () => {
