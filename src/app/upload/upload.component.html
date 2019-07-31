@@ -3,6 +3,13 @@
     <div>
       <form [formGroup] = "form" (ngSubmit)="onSubmit()">
         <div>
+
+          <h4>
+            Video title:
+          </h4>
+          <label>
+            <input type="text" formControlName="title" placeholder="Title" />
+          </label>
           <h4>
           Upload your video! (mp4 only)
             </h4>
@@ -18,3 +25,5 @@
     </div>
   </div>
 </div>
+
+

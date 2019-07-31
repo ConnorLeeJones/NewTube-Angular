@@ -10,16 +10,17 @@ import {environment} from '../../environments/environment';
 })
 export class UploadComponent implements OnInit {
 
-  //url = "http://localhost:8080/videos/uploadFile";
   url = environment.baseUrl + '/videos/uploadFile';
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private httpClient: HttpClient) { }
+              private httpClient: HttpClient) {
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      profile: ['']
+      profile: [''],
+      title: ['']
     });
   }
 
@@ -38,6 +39,8 @@ export class UploadComponent implements OnInit {
 
       const formData = new FormData();
       formData.append('file', this.form.get('profile').value);
+      formData.append('title', this.form.get('title').value);
+
 
       this.httpClient.post<any>(this.url, formData).subscribe(
         () => uploadHTML.innerHTML = "<h5> Video uploaded successfully! </h5>",

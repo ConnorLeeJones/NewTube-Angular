@@ -1,4 +1,4 @@
 export class Upload {
-  videoName: string;
-  video: any;
+  title: string;
+  file: any;
 }
