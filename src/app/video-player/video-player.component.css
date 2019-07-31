@@ -4,3 +4,9 @@
   display: block;
   border: #333333;
 }
+
+#videoBox{
+  background-color: white;
+  height: 35px;
+  width: 500px;
+}

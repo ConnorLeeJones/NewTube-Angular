@@ -1,13 +1,25 @@
 <div *ngIf="video">
 
-  <h5 align="center" id="videoTitle">"{{video.videoName}}"</h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-dark my-5">
+          <div class="card-body">
+  <h4 class="card-title text-center text-white py-3">"{{video.videoName}}"</h4>
 
 
-  <video class="center" id="videoPlayer" height="300" width="420" autoplay="autoplay" controls>
+<!--      <div id="videoBox" class="card-title text-center text-white py-3">-->
+<!--  <h5 align="center" id="videoTitle">"{{video.videoName}}"</h5>-->
+
+
+
+      <video class="center" id="videoPlayer" height="300" width="420" autoplay="autoplay" controls>
     <source src="{{video.videoPath}}" type="{{video.videoType}}">
   </video>
 
-  <app-comments userId="abc" [videoId]="video.videoId" id="comments"></app-comments>
 
+  <app-comments userId="abc" [videoId]="video.videoId" id="comments"></app-comments>
+        </div></div></div></div>
+  </div>
 
 </div>

@@ -37,6 +37,8 @@ export class CommentsComponent implements OnInit {
     this.commentsService.addComment(this.videoId, comment);
     this.commentsService.getComments(this.videoId).subscribe(videoComments => {
       this.comments = videoComments.comments;
+
+      this.ngOnInit();
     });
   }
 
