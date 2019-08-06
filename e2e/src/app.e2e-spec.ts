@@ -28,7 +28,7 @@ describe('workspace-project App', () => {
   it('should display upload video section', () => {
     page.navigateToPath("/addvideo");
     browser.sleep(5000);
-    expect(page.getUploadText()).toEqual('Upload your video! (mp4 only)');
+    expect(page.getUploadText()).toEqual('Video title:');
   });
 
   it('should display login', () => {
