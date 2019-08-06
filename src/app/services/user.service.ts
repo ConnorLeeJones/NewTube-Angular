@@ -17,7 +17,8 @@ export class UserService {
 
   public addUser(user) {
     console.log(user);
-    this.http.post("http://localhost:8080/users", user).subscribe();
+    this.http.post(environment.baseUrl + "/users", user).subscribe();
+    this.router.navigate(['/login']);
   }
 
 
@@ -37,7 +38,9 @@ export class UserService {
 
 
   public logOut(){
-    localStorage.setItem('currentUser', null);
+    // localStorage.setItem('currentUser', null);
+    localStorage.removeItem('currentUser');
+
     this.currentUser = null;
     this.router.navigate(['/login']);
   }
