@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from "../user/user";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -15,26 +16,17 @@ export class UserService {
 
   public addUser(user) {
     console.log(user);
-    this.http.post("https://video-new-tube.herokuapp.com/users", user).subscribe();
+    this.http.post("http://localhost:8080/users", user).subscribe();
   }
 
 
   public logIn(user : User){
 
-    console.log(user.userId);
-    console.log(user.password);
-    console.log(this.currentUser);
-    let password = user.password;
-
-    this.http.get<User>("https://video-new-tube.herokuapp.com/user/" + user.userId).subscribe(user =>
+    this.http.put<User>("http://localhost:8080/login/", user).subscribe(tempUser =>
     {
-      if (user.password === password){
-        this.currentUser = user;
-        console.log('it worked')
-      } else {
-        this.currentUser = null;
-        console.log('Wrong username or password');
-      }
+      this.currentUser = tempUser;
+      this.currentUser.password = null;
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
     });
 
 
