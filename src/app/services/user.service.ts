@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class UserService {
 
-  private currentUser: User;
+  public currentUser: User;
 
   constructor(private http: HttpClient, private router: Router) {
     this.currentUser = new User();
@@ -22,19 +22,25 @@ export class UserService {
 
 
   public logIn(user : User){
-
-
     this.http.put<User>(environment.baseUrl + "/login/", user).subscribe(tempUser => {
       this.currentUser = tempUser;
       this.currentUser.password = null;
       localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    });
-    this.router.navigate(['/videos']);
 
+        this.router.navigate(['/videos']);
+      }, error1 =>
+      alert('Incorrect username or password.')
+    );
 
 
   }
 
+
+  public logOut(){
+    localStorage.setItem('currentUser', null);
+    this.currentUser = null;
+    this.router.navigate(['/login']);
+  }
 
 
 

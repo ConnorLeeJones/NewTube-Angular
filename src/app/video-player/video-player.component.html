@@ -1,17 +1,16 @@
 <div *ngIf="video">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card bg-dark my-5">
+        <div class="card bg-dark my-1 py-1">
           <div class="card-body">
-            <h4 class="card-title text-center text-white py-3">"{{video.videoName}}"</h4>
+            <div class="card-title text-center bg-dark mx-auto w-75 text-white py-1">
+              <h4><em> "{{video.videoName}}"</em></h4><h5><u> uploaded by {{video.userId}}:</u> </h5></div>
+
+
             <video class="center" id="videoPlayer" height="300" width="420" autoplay="autoplay" controls>
               <source src="{{video.videoPath}}" type="{{video.videoType}}">
             </video>
             <app-comments userId="abc" [videoId]="video.videoId" id="comments"></app-comments>
           </div>
         </div>
-      </div>
-    </div>
   </div>
 </div>

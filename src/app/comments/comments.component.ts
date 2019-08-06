@@ -38,7 +38,7 @@ export class CommentsComponent implements OnInit {
   addComment() {
     let comment: Comment = new Comment();
     comment.text = this.commentText;
-    comment.userId = this.userId;
+    comment.userId = this.currentUser.userId;
     this.commentsService.addComment(this.videoId, comment);
     this.commentsService.getComments(this.videoId).subscribe(videoComments => {
       this.comments = videoComments.comments;
