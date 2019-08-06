@@ -18,14 +18,11 @@ export class UserLoginComponent implements OnInit {
   }
 
   public addUser() {
-    console.log(this.user);
     this.service.addUser(this.user);
   }
 
 
   onSubmit() {
-    //this.service.logIn(event);
-    console.log(this.user);
     this.service.logIn(this.user);
   }
 }

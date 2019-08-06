@@ -1,3 +1,6 @@
+<div *ngIf="currentUser; else notLoggedIn">
+  
+
 <div class="container">
       <div class="card bg-dark my-5">
         <div class="card-body">
@@ -32,3 +35,8 @@
   </div>
 
 
+</div>
+
+<ng-template #notLoggedIn>
+  <app-not-logged-in></app-not-logged-in>
+</ng-template>

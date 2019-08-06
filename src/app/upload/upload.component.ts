@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {User} from '../user/user';
 
 @Component({
   selector: 'app-upload',
@@ -12,6 +13,7 @@ export class UploadComponent implements OnInit {
 
   url = environment.baseUrl + '/videos/uploadFile';
   form: FormGroup;
+  currentUser: User;
 
   constructor(private formBuilder: FormBuilder,
               private httpClient: HttpClient) {
@@ -22,6 +24,7 @@ export class UploadComponent implements OnInit {
       profile: [''],
       title: ['']
     });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
   }
 
   upload(event) {

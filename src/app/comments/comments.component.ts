@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Comment } from './comment';
 import {CommentsService} from "../services/comments.service";
+import {User} from '../user/user';
 
 @Component({
   selector: 'app-comments',
@@ -12,6 +13,7 @@ export class CommentsComponent implements OnInit {
   public commentText: string;
   @Input() videoId: string;
   @Input() userId: string;
+  currentUser: User;
 
   constructor(private commentsService: CommentsService) { }
 
@@ -27,6 +29,9 @@ export class CommentsComponent implements OnInit {
        console.log(this.comments);
      });
     console.log(this.comments[0]);
+
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.currentUser);
   }
 
 
