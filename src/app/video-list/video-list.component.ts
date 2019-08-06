@@ -17,6 +17,7 @@ export class VideoListComponent implements OnInit {
   ngOnInit() {
     this.videoService.findAll().subscribe(data => {
       this.videos = data;
+      console.log(this.videos[0].userId);
     });
   }
 

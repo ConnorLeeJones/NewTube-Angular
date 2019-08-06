@@ -13,7 +13,11 @@ export class AppComponent {
   user = new User();
 
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
+
+  logOut(){
+    this.userService.logOut();
+  }
 
 }

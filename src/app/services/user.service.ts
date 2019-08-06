@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from "../user/user";
 import {environment} from "../../environments/environment";
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private currentUser: User;
+  public currentUser: User;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.currentUser = new User();
   }
 
@@ -21,18 +22,25 @@ export class UserService {
 
 
   public logIn(user : User){
-
-    this.http.put<User>("http://localhost:8080/login/", user).subscribe(tempUser =>
-    {
+    this.http.put<User>(environment.baseUrl + "/login/", user).subscribe(tempUser => {
       this.currentUser = tempUser;
       this.currentUser.password = null;
       localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    });
 
+        this.router.navigate(['/videos']);
+      }, error1 =>
+      alert('Incorrect username or password.')
+    );
 
 
   }
 
+
+  public logOut(){
+    localStorage.setItem('currentUser', null);
+    this.currentUser = null;
+    this.router.navigate(['/login']);
+  }
 
 
 

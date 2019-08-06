@@ -1,11 +1,13 @@
-<div class="card my-5" id="video list">
+<div class="card my-5" id="video list" >
     <div class="card-body">
-        <div class ="my-custom-scrollbar">
+        <div class ="table-wrapper-scroll-y my-custom-scrollbar">
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">PLAY</th>
                 <th scope="col">TITLE</th>
+                <th scope="col">UPLOADED BY:</th>
+
                 <th scope="col">DOWNLOAD</th>
             </tr>
             </thead>
@@ -15,10 +17,11 @@
               <td><a routerLink="/videos/videoplayer/{{ video.videoId }}">play</a></td>
 
               <td>{{ video.videoName }}</td>
+                <td>{{ video.userId }}</td>
                 <td><a href="{{ video.videoPath }}">download</a></td>
             </tr>
             </tbody>
         </table>
-    </div>
+        </div>
     </div>
 </div>
