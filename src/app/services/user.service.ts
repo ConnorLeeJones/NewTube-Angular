@@ -38,7 +38,6 @@ export class UserService {
 
 
   public logOut(){
-    // localStorage.setItem('currentUser', null);
     localStorage.removeItem('currentUser');
 
     this.currentUser = null;
