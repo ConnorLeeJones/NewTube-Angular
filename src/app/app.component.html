@@ -8,16 +8,18 @@
             <li class="list-inline-item"><a routerLink="/videos" class="btn btn-info">Videos</a></li>
             <li class="list-inline-item"><a routerLink="/addvideo" class="btn btn-info">Upload Video</a></li>
 
-            <ng-template #notLoggedIn>
-            <li class="list-inline-item"><a  routerLink="/login" class="btn btn-info">Login</a></li>
-            </ng-template>
 
             <li  *ngIf="this.userService.currentUser; else notLoggedIn" class="list-inline-item"><a  (click)="logOut()" class="btn btn-info text-white">Logout</a></li>
 
+            <ng-template #notLoggedIn>
+              <li class="list-inline-item"><a  routerLink="/login" class="btn btn-info">Login</a></li>
+            </ng-template>
 
             <li class="list-inline-item"><a  routerLink="/signup" class="btn btn-info">Signup</a></li>
           </ul>
+
         </div>
+
       </div>
       <router-outlet></router-outlet>
     </div>
