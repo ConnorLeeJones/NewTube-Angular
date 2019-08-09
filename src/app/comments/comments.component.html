@@ -17,7 +17,7 @@
 </ng-template>
 
 
-<div *ngIf="comments.length > 0">
+<div>
 <div class="card my-5">
   <div class="table-wrapper-scroll-y my-custom-scrollbar" id="comments">
     <table class="table table-bordered table-striped" id="comment list">
@@ -25,20 +25,24 @@
       <tr>
         <th scope="col">USER</th>
         <th scope="col">COMMENT</th>
-        <th scope="col">POSTED</th>
+        <th scope="col">DATE</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="comments.length > 0; else noComments">
       <tr *ngFor="let comment of comments">
         <td> {{comment.userId}} </td>
         <td>"{{ comment.text }}"</td>
         <td>{{ comment.createdDate | date:"MM/dd/yy"}}</td>
       </tr>
       </tbody>
+
+
+      <ng-template #noComments>
+        <tbody>No comments yet.</tbody>
+      </ng-template>
     </table>
   </div>
 </div>
 </div>
-
 
 
