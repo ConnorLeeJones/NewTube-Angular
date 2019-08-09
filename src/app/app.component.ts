@@ -11,6 +11,7 @@ import {UserService} from "./services/user.service";
 export class AppComponent implements OnInit {
   title = 'Welcome to NewTube!';
   user = new User();
+  currentUser: User;
 
 
   constructor(private userService: UserService) {}
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
+    this.currentUser = this.userService.currentUser;
 
   }
 
